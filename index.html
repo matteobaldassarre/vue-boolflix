@@ -101,7 +101,7 @@
                                 <!-- Movie Overviw -->
                                 <div class="movie-overview">
                                     <span class="movie-caption">Overview:</span> 
-                                    <p class="overview">{{ movie.overview }}</p>
+                                    <p class="overview">{{ movie.overview.substring(1, 150) + '...' }}</p>
                                 </div>
                             </div>
                         </div>
