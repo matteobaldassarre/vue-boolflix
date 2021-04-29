@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous"/>
+    <!-- Axios CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
     <!-- VueJS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <title>BoolFlix</title>
@@ -16,7 +18,58 @@
     
     <!-- VueJS Container -->
     <div id="root">
-        
+        <!-- HEADER -->
+        <header>
+            <button @click="searchMovie()">Search</button>
+            <input v-model="searchedMovie" @keyup.enter="searchMovie()">
+        </header>
+        <!-- END HEADER -->
+
+
+        <!-- MAIN -->
+        <main>
+            <!-- Movies Container -->
+            <div class="movies-container">
+
+                <!-- Movies -->
+                <div class="movies-list">
+
+                    <!-- Single Movie -->
+                    <div class="movie-card" v-for="movie in movies" v-if="movie.poster_path != null && movie.vote_average != 0">
+
+                        <!-- Movie Thumbnail -->
+                        <div class="movie-thumbnail">
+                            <img :src=" `https://image.tmdb.org/t/p/w342/${movie.poster_path}` " alt="movie-thumbnail">
+                        </div>
+                        <div v-else>
+                            No Thumbnail
+                        </div>
+                        <!-- Movie Name -->
+                        <div class="movie-name">{{ movie.title || movie.name }}</div>
+                        <!-- Movie Original Name -->
+                        <div class="movie-original-name" 
+                        v-show="movie.title != movie.original_title || movie.name != movie.original_name">
+                            {{ movie.original_title || movie.original_name }}
+                        </div>
+                        <!-- Movie Language -->
+                        <div class="movie-lang">
+                            <img src="img/english-flag.png" alt="english-flag" v-if=" movie.original_language == 'en' ">
+                            <img src="img/italian-flag.png" alt="italian-flag" v-else-if=" movie.original_language == 'it' ">
+                            <span v-else>unknown</span>
+                        </div>
+                        <!-- Movie Rating -->
+                        <div class="movie-rating">{{ movieRating }}</div>
+
+                    </div> 
+                    <!-- End Single Movie -->
+
+                </div>
+                <!-- End Movies -->
+
+            </div>
+            <!-- End Movies Container -->
+        </main>
+        <!-- END MAIN -->
     </div>
     <!-- End VueJS Container -->
 

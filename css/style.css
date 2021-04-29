@@ -1,6 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 /* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+}
+
+img {
+    width: 100%;
+}
+
+/* Header */
+header {
+    background-color: beige;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Movies Container */
+.movies-container {
+    background-color: bisque;
+    padding: 50px;
+}
+
+.movies-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie-card {
+    text-align: center;
+    background-color: chocolate;
+    width: calc( ( 100% / 5 ) - 20px);
+    margin: 10px;
+}
+
+.movie-lang {
+    width: 40px;
+    margin: 0 auto;
 }
