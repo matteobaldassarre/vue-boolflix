@@ -20,8 +20,37 @@
     <div id="root">
         <!-- HEADER -->
         <header>
-            <button @click="searchMovie()">Search</button>
-            <input v-model="searchedMovie" @keyup.enter="searchMovie()">
+            <!-- BoolFlix Logo -->
+            <div class="logo">
+                <img src="img/boolflix-logo.png" alt="boolflix-logo">
+            </div>
+            <!-- BoolFlix Main Menu -->
+            <nav class="main-menu">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Tv Series</a>
+                    </li>
+                    <li>
+                        <a href="#">Movies</a>
+                    </li>
+                    <li>
+                        <a href="#">Recently Added</a>
+                    </li>
+                    <li>
+                        <a href="#">My List</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- BoolFlix Search -->
+            <div class="search-section">
+                <div class="lense">
+                    <button @click="searchMovie()" class="search-btn"><i class="fas fa-search"></i></button>
+                    <input v-model="searchedMovie" @keyup.enter="searchMovie()">
+                </div>
+            </div>
         </header>
         <!-- END HEADER -->
 
@@ -35,30 +64,47 @@
                 <div class="movies-list">
 
                     <!-- Single Movie -->
-                    <div class="movie-card" v-for="movie in movies" v-if="movie.poster_path != null && movie.vote_average != 0">
+                    <div class="movie-card card" v-for="movie in movies" v-if="movie.poster_path != null && movie.vote_average != 0">
 
-                        <!-- Movie Thumbnail -->
-                        <div class="movie-thumbnail">
-                            <img :src=" `https://image.tmdb.org/t/p/w342/${movie.poster_path}` " alt="movie-thumbnail">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <!-- Movie Thumbnail -->
+                                <div class="movie-thumbnail">
+                                    <img :src=" `https://image.tmdb.org/t/p/w342/${movie.poster_path}` " alt="movie-thumbnail">
+                                </div>
+                            </div>
+
+                            <div class="card-back">
+                                <!-- Movie Name -->
+                                <div class="movie-name">
+                                    <span class="movie-caption">Title:</span> {{ movie.title || movie.name }}
+                                </div>
+                                <!-- Movie Original Name -->
+                                <div class="movie-original-name" v-show="movie.title != movie.original_title || movie.name != movie.original_name">
+                                    <span class="movie-caption">Original Title:</span> {{ movie.original_title || movie.original_name }}
+                                </div>
+                                <!-- Movie Language -->
+                                <div class="movie-lang">
+                                    <span class="movie-caption">Language:</span> 
+                                    <img src="img/english-flag.png" alt="english-flag" v-if=" movie.original_language == 'en' ">
+                                    <img src="img/italian-flag.png" alt="italian-flag" v-else-if=" movie.original_language == 'it' ">
+                                    <span v-else>unknown</span>
+                                </div>
+                                <!-- Movie Rating -->
+                                <div class="movie-rating">
+                                    <!-- Stars -->
+                                    <div>
+                                        <span class="movie-caption">Rating:</span> 
+                                        <i class="fas fa-star" v-for="star in obtainRating(movie.vote_average)"></i><i class="far fa-star" v-for="star in (5 - obtainRating(movie.vote_average))"></i>
+                                    </div>
+                                </div>
+                                <!-- Movie Overviw -->
+                                <div class="movie-overview">
+                                    <span class="movie-caption">Overview:</span> 
+                                    <p class="overview">{{ movie.overview }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div v-else>
-                            No Thumbnail
-                        </div>
-                        <!-- Movie Name -->
-                        <div class="movie-name">{{ movie.title || movie.name }}</div>
-                        <!-- Movie Original Name -->
-                        <div class="movie-original-name" 
-                        v-show="movie.title != movie.original_title || movie.name != movie.original_name">
-                            {{ movie.original_title || movie.original_name }}
-                        </div>
-                        <!-- Movie Language -->
-                        <div class="movie-lang">
-                            <img src="img/english-flag.png" alt="english-flag" v-if=" movie.original_language == 'en' ">
-                            <img src="img/italian-flag.png" alt="italian-flag" v-else-if=" movie.original_language == 'it' ">
-                            <span v-else>unknown</span>
-                        </div>
-                        <!-- Movie Rating -->
-                        <div class="movie-rating">{{ movieRating }}</div>
 
                     </div> 
                     <!-- End Single Movie -->

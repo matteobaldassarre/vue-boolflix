@@ -4,7 +4,6 @@ var app = new Vue({
     data: {
         searchedMovie: '',
         movies: [],
-        movieRating: 0
     },
     methods: {
         // Function that transforms the average rating from 1 to 10 in a number from 1 to 5 and rounds it up
@@ -29,13 +28,10 @@ var app = new Vue({
                         // Populating the array with only movies and tv series
                         if (element.media_type == 'movie' || element.media_type == 'tv') {
                             this.movies.push(element);
-                            this.movieRating = this.obtainRating(element.vote_average);
                         } 
                     });
                 });
             }
-
-            console.log(this.movieRating);
         }
     }
 
