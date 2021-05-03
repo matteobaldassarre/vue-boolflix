@@ -147,9 +147,20 @@ var app = new Vue({
             .then((response) => {
                 const genres = response.data.genres;
                 genres.forEach((element) => {
-                    if (!this.genresList.includes(element)) {
+
+                    let id = element.id;
+                    var found = false;
+
+                    this.genresList.forEach((elementInner) => {
+                        if (elementInner.id == id) {
+                            found = true;
+                        }
+                    });
+
+                    if (found == false) {
                         this.genresList.push(element);
-                    } 
+                    }
+                    
                 });
             });
         },
