@@ -35,7 +35,7 @@ var app = new Vue({
 
         searchedMovie: '', // The movie searched by the user
 
-        userHasSearched: false,
+        userHasSearched: false, // Checks if the user has searched, if true shows the movies
 
         movies: [], // The movies shown after user search
 
