@@ -4,6 +4,9 @@ var app = new Vue({
 
     // DATA SECTION
     data: {
+
+        apiKey: '4b3a13643ab10188ae2a3c87ceb470a0', // Saving TheMovieDb api key
+
         appHasStarted: false, // Check if the user has started the page or not
 
         accounts: [ // Array of all accounts containing infos about photo, alt attribute and profile name
@@ -94,7 +97,7 @@ var app = new Vue({
             if (this.searchedMovie.length > 0) {
                 axios.get('https://api.themoviedb.org/3/search/multi', {
                         params: {
-                            api_key: '4b3a13643ab10188ae2a3c87ceb470a0',
+                            api_key: this.apiKey,
                             query: this.searchedMovie,
                         }
                     })
@@ -120,7 +123,7 @@ var app = new Vue({
         showOtherInfos(movie, index) {
             axios.get(`https://api.themoviedb.org/3/movie/${movie.id}`, {
                 params: {
-                    api_key: '4b3a13643ab10188ae2a3c87ceb470a0',
+                    api_key: this.apiKey,
                     append_to_response: 'genres,credits'
                 }
             })
