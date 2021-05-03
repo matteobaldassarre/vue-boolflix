@@ -153,12 +153,10 @@ var app = new Vue({
                 });
             });
         },
-
     },
 
     // CREATED SETCION
     created() {
-        // This function let's the intro disappear in 3 seconds after the page loads
 
         // Calling genres of movie and tv
         this.getGrenres('movie');
