@@ -146,13 +146,14 @@ var app = new Vue({
             .get(`https://api.themoviedb.org/3/genre/${mediaType}/list?api_key=4b3a13643ab10188ae2a3c87ceb470a0`)
             .then((response) => {
                 const genres = response.data.genres;
+
                 genres.forEach((element) => {
 
-                    let id = element.id;
-                    var found = false;
+                    let genreId = element.id; // Saving the genre id in a variable
+                    let found = false; // Flag variable to check the multiple occurrence of an id
 
                     this.genresList.forEach((elementInner) => {
-                        if (elementInner.id == id) {
+                        if (elementInner.id == genreId) {
                             found = true;
                         }
                     });
@@ -160,7 +161,7 @@ var app = new Vue({
                     if (found == false) {
                         this.genresList.push(element);
                     }
-                    
+
                 });
             });
         },
