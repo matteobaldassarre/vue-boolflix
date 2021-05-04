@@ -64,7 +64,7 @@
                 <!-- HEADER -->
                 <header>
                     <!-- BoolFlix Logo -->
-                    <div class="logo">
+                    <div class="logo" @click="returnToHomePage()">
                         <img src="img/boolflix-logo.png" alt="boolflix-logo">
                     </div>
                     <!-- BoolFlix Main Menu -->
@@ -72,7 +72,7 @@
                         <ul>
                             <!-- Home -->
                             <li>
-                                <a href="#" @click="returnToHomePage()">Home</a>
+                                <a href="#" @click="userHasSearched = false">Home</a>
                             </li>
                             <!-- Tv Series -->
                             <li>
@@ -142,7 +142,7 @@
                                             </div>
                                         </div>
             
-                                        <div class="card-back">
+                                        <div class="card-back" @mouseleave="setTimeout(function(){ movieIndex = -1; }, 300);">
             
                                             <!-- Other Infos -->
                                             <div class="other-infos" v-if="index == movieIndex">
@@ -210,7 +210,7 @@
                                                     <p class="overview" v-else>{{ movie.overview }}</p>
                                                 </div>
                                                 <!-- Toggle Other Infos -->
-                                                <button @click="showOtherInfos(movie, index)" class="movie-inside-button">Show Other Infos</button>
+                                                <button @click="showOtherInfos(movie, index)" class="movie-inside-button more">More</button>
                                             </div>
             
                                         </div>
@@ -241,7 +241,7 @@
                                             </div>
                                         </div>
             
-                                        <div class="card-back">
+                                        <div class="card-back" @mouseleave="setTimeout(function(){ movieIndex = -1; }, 300);">
             
                                             <!-- Other Infos -->
                                             <div class="other-infos" v-if="index == movieIndex && movieGenres.length > 0">
@@ -319,8 +319,7 @@
                                                 </div>
             
                                                 <!-- Toggle Other Infos -->
-                                                <button @click="showOtherInfos(movie, index)" class="movie-inside-button">Show
-                                                    Other Infos</button>
+                                                <button @click="showOtherInfos(movie, index)" class="movie-inside-button more">More</button>
                                             </div>
             
                                         </div>
@@ -345,7 +344,7 @@
                                             </div>
                                         </div>
             
-                                        <div class="card-back">
+                                        <div class="card-back" @mouseleave="setTimeout(function(){ movieIndex = -1; }, 300);">
             
                                             <!-- Other Infos -->
                                             <div class="other-infos" v-if="index == movieIndex">
@@ -423,8 +422,7 @@
                                                 </div>
             
                                                 <!-- Toggle Other Infos -->
-                                                <button @click="showOtherInfos(movie, index)" class="movie-inside-button">Show
-                                                    Other Infos</button>
+                                                <button @click="showOtherInfos(movie, index)" class="movie-inside-button more">More</button>
                                             </div>
             
                                         </div>
@@ -449,7 +447,7 @@
                                             </div>
                                         </div>
             
-                                        <div class="card-back">
+                                        <div class="card-back" @mouseleave="setTimeout(function(){ movieIndex = -1; }, 300);">
             
                                             <!-- Other Infos -->
                                             <div class="other-infos" v-if="index == movieIndex">
@@ -527,8 +525,7 @@
                                                 </div>
             
                                                 <!-- Toggle Other Infos -->
-                                                <button @click="showOtherInfos(movie, index)" class="movie-inside-button">Show
-                                                    Other Infos</button>
+                                                <button @click="showOtherInfos(movie, index)" class="movie-inside-button more">More</button>
                                             </div>
             
                                         </div>

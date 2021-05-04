@@ -48,6 +48,8 @@ var app = new Vue({
 
         movieCast: [], // List populated by the actors of the current movie
 
+        error404: false, // Check if error 404 is detected or not to show the 'more' button
+
         introIsPlaying: false, // Checks if the boolflix intro is currently playing or not
 
         genresList: [], // List of all genres, displayed in the top nav-bar select tag
@@ -137,9 +139,24 @@ var app = new Vue({
                     this.movieCast.push(element.name);
                     if (this.movieCast.length > 5) {
                         this.movieCast.length = 5;
-                    } 
+                    }
                 });
-            });
+
+            })
+            .catch(err => {
+                if (err.response.status == 404) {
+                    const changeButton = document.getElementsByClassName('more')
+                    for (let i = 0; i < changeButton.length; i++) {
+                        const element = changeButton[i];
+                        element.innerHTML = 'No \'more\' to display';
+                        setTimeout(() => {
+                            const element = changeButton[i];
+                            element.innerHTML = 'More';
+                        }, 500);
+                    }
+                    
+                } 
+            })
         },
 
         // Function that get all genres and populates an array named this.genresList

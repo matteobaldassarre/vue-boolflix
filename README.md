@@ -18,7 +18,7 @@ After selecting a user you will join the Boolflix Home Page, here you can take a
 
 ## Boolflix Medias
 Flip a media card by hovering on it and take a look at the main infos about the movie! 
-You can also watch the movie genres and the first 5 cast members of that movie by clicking on the "Show Other Infos" button
+You can also watch the movie genres and the first 5 cast members of that movie by clicking on the "More" button
 
 ![movie-info](media/movie-info.gif)
 
