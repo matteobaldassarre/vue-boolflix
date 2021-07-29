@@ -285,6 +285,8 @@ header .main-menu li a:hover {
     height: 100%;
     transition: transform 0.3s;
     transform-style: preserve-3d;
+    margin-bottom: 20px;
+    margin-right: 20px;
 }
 
 .card:hover .card-inner {
@@ -318,7 +320,7 @@ header .main-menu li a:hover {
 .movies-container h2 {
     color: white;
     margin-left: 5px;
-    padding-top: 100px;
+    padding-top: 90px;
 }
 .movies-list {
     display: flex;
@@ -327,7 +329,8 @@ header .main-menu li a:hover {
 
 .movie-card {
     width: calc( 100% / 5 - 20px);
-    margin: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
     color: white;
 }
 

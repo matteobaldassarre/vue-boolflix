@@ -72,7 +72,7 @@
                         <ul>
                             <!-- Home -->
                             <li>
-                                <a href="#" @click="userHasSearched = false">Home</a>
+                                <a href="#" @click="resetPage()">Home</a>
                             </li>
                             <!-- Tv Series -->
                             <li>
@@ -110,7 +110,7 @@
                         </div>
             
                         <!-- Current User -->
-                        <div class="current-user" @click="dropDownOpened = !dropDownOpened">
+                        <div class="current-user">
                             <img :src="`img/${accounts[accountPicture].photo}`" :alt="`${accounts[accountPicture].alt}`">
                             <i class="fas fa-sort-down"></i>
                         </div>

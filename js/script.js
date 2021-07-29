@@ -185,6 +185,14 @@ var app = new Vue({
                 });
             });
         },
+
+
+        // Function that resets the searchbar and genre filter when clicking on Home button
+        resetPage() {
+            this.userHasSearched = false;
+            this.searchedMovie = '';
+            this.thisGenre = 'All';
+        }
     },
 
     // CREATED SETCION
